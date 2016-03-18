@@ -15,25 +15,22 @@ Returns 200 OK with a response body in the following format when successful:
   <person>
     <email>joyce@fictional.com</email>
     <id type="integer">516784585</id>
-    <login nil="true"></login>
     <name>Joyce Bilbrey</name>
   </person>
   <person>
     <email>robert@fictional.com</email>
     <id type="integer">957904360</id>
-    <login nil="true"></login>
     <name>Robert Ryder</name>
+    <external-user-id>853</external-user-id>
   </person>
   <person>
     <email>olivia@fictional.com</email>
     <id type="integer">209365805</id>
-    <login nil="true"></login>
     <name>Olivia Battle</name>
   </person>
   <person>
     <email>marlene@fictional.com</email>
     <id type="integer">251465608</id>
-    <login nil="true"></login>
     <name>Marlene Mclane</name>
   </person>
   [...]
@@ -43,10 +40,10 @@ Returns 200 OK with a response body in the following format when successful:
 Creating a user
 ----------
 
-* `POST /person.xml` creates a new member of the organization.
+* `POST /person.xml` creates a new member of the organization. The external_user_id fields is optional
 
 ```
-/person.xml?api_key=123456789&person[email]=test%40test.com&person[login]=test&person[name]=Test&person[password]=test&person[password_confirmation]=test
+/person.xml?api_key=123456789&person[email]=test%40test.com&person[name]=Test&person[password]=test&person[password_confirmation]=test&person[external_user_id]=123
 ```
 
 Returns 200 OK with a response body in the following format when successful:
@@ -56,8 +53,8 @@ Returns 200 OK with a response body in the following format when successful:
 <person>
   <email>test@test.com</email>
   <id type="integer">1067646470</id>
-  <login>test</login>
   <name>Test</name>
+  <external-user-id>123</external-user-id>
 </person>
 ```
 
@@ -73,8 +70,8 @@ Returns 200 OK with a response body in the following format when successful:
 <person>
   <email>monica@fictional.com</email>
   <id type="integer">911230097</id>
-  <login nil="true"></login>
   <name>Monica Wolfson</name>
+  <external-user-id>123</external-user-id>
 </person>
 ```
 
@@ -84,7 +81,7 @@ Updating a user
 * `PUT /person/[:id].xml` updates the person specified by [:id].
 
 ```
-/person/[:id].xml?api_key=123456789&person[email]=monica%40fictional.com&person[login]=monica%40fictional.com&person[name]=Monica+Wolfson
+/person/[:id].xml?api_key=123456789&person[email]=monica%40fictional.com&person[name]=Monica+Wolfson&person[external_user_id]=345
 ```
 
 Returns 200 OK with a blank response body when successful.
